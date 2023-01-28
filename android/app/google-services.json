@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "224346674725",
+    "project_id": "smart-group-175da",
+    "storage_bucket": "smart-group-175da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224346674725:android:f5d41b19bb6b233aaf51cc",
+        "android_client_info": {
+          "package_name": "com.example.smart_group"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224346674725-73ivns69ha11nk14arjp57trb9cilb2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUz5P4eJ-YJFVv0y5nd3RnlgUeCnQ_Yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224346674725-73ivns69ha11nk14arjp57trb9cilb2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
