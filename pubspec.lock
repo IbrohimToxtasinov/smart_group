@@ -1025,8 +1025,7 @@ packages:
     dependency: "direct main"
     description:
       name: pattern_formatter
-      sha256: c488f1d1e3bbb0b90ec21abd50a891feb89857c4755cdcd81a75525e89c78121
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
   pedantic:

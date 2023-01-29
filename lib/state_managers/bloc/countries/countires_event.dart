@@ -1,6 +1,3 @@
-part of 'countries_bloc.dart';
-
-
 abstract class CountriesEvent {}
 
-class GetData extends CountriesEvent {}
+class GetCountries extends CountriesEvent {}
