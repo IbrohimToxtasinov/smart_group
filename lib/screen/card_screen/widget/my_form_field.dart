@@ -5,16 +5,26 @@ import 'package:smart_group/screen/card_screen/widget/card_info.dart';
 
 import '../../../utils/color.dart';
 
-class MyFormField extends StatelessWidget {
+class MyFormField extends StatefulWidget {
   final TextEditingController controller;
   final String title;
   final TextInputAction textInputAction;
+  final TextInputType inputType;
 
   const MyFormField({
     Key? key,
     required this.controller,
-    required this.title, required this.textInputAction,
+    required this.title,
+    required this.textInputAction,
+    this.inputType = TextInputType.text,
   }) : super(key: key);
+
+  @override
+  State<MyFormField> createState() => _MyFormFieldState();
+}
+
+class _MyFormFieldState extends State<MyFormField> {
+  bool isError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,37 +35,46 @@ class MyFormField extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 12),
-            child: Text(title),
+            child: Text(widget.title),
           ),
           const SizedBox(height: 7),
           TextFormField(
-            inputFormatters: title == "Karta raqami"
-                ? [
-              CreditCardFormatter(),
-                    LengthLimitingTextInputFormatter(19)
-            ]
-                : title == "Amal qilish muddati"?[
-              CardExpirationFormatter(),
-              LengthLimitingTextInputFormatter(5)
-            ]:[
-
-
-            ],
+            keyboardType: widget.inputType,
+            inputFormatters: widget.title == "Karta raqami"
+                ? [CreditCardFormatter(), LengthLimitingTextInputFormatter(19)]
+                : widget.title == "Amal qilish muddati"
+                    ? [
+                        CardExpirationFormatter(),
+                        LengthLimitingTextInputFormatter(5)
+                      ]
+                    : [],
             onChanged: (s) {
-              if (title == "Karta raqami") {
+              if (widget.title == "Karta raqami") {
                 CardInfo.numberValue.value = s;
-              } else if (title == "Amal qilish muddati") {
+              } else if (widget.title == "Amal qilish muddati") {
                 CardInfo.dateValue.value = s;
-              } else if (title == "Karta nomi") {
+                if (s.length == 5) {
+                  if (DateTime.now().year.toString() == "20${s.substring(3)}") {
+                    if (DateTime.now().month >= int.parse(s.substring(0, 2))) {
+                      setState(() => isError = true);
+                      print('"er5r');
+                    }
+                  } else if (DateTime.now().year > int.parse("20${s.substring(3)}")) {
+                    setState(() => isError = true);
+                  }
+                }else{
+                  setState(() => isError = false);
+                }
+              } else if (widget.title == "Karta nomi") {
                 CardInfo.nameValue.value = s;
-              } else if (title == "Karta egasining to'liq ism sharifi") {
+              } else if (widget.title == "Karta egasining to'liq ism sharifi") {
                 CardInfo.ownerValue.value = s;
               }
             },
-            textInputAction: textInputAction,
-            controller: controller,
+            textInputAction: widget.textInputAction,
+            controller: widget.controller,
             decoration: InputDecoration(
-              hintText: title,
+              hintText: widget.title,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
               border: OutlineInputBorder(
@@ -63,10 +82,12 @@ class MyFormField extends StatelessWidget {
                   borderSide: const BorderSide(color: MyColors.othersDark4)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: const BorderSide(color: MyColors.othersDark4)),
+                  borderSide: BorderSide(
+                      color: isError ? MyColors.error : MyColors.othersDark4)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: const BorderSide(color: MyColors.othersDark4)),
+                  borderSide: BorderSide(
+                      color: isError ? MyColors.error : MyColors.othersDark4)),
             ),
           ),
         ],

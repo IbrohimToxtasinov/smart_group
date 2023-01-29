@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:smart_group/screen/card_screen/widget/card_info.dart';
 import 'package:smart_group/screen/card_screen/widget/my_button.dart';
 import 'package:smart_group/screen/card_screen/widget/my_form_field.dart';
@@ -112,11 +111,13 @@ class AddCardScreenState extends State<AddCardScreen> {
               MyFormField(
                 controller: cardNumber,
                 title: 'Karta raqami', textInputAction: TextInputAction.next,
+                  inputType: TextInputType.number
               ),
               MyFormField(
                 controller: cardDate,
                 title: 'Amal qilish muddati',
                 textInputAction: TextInputAction.next,
+                  inputType: TextInputType.number
               ),
               MyFormField(
                 controller: cardName,
