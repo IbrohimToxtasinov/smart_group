@@ -1,19 +1,20 @@
-import 'package:smart_group/data/api/models/countries_model.dart';
-import 'package:smart_group/data/api/models/my_response/my_response.dart';
 import 'package:smart_group/data/api/service/api_service.dart';
 import 'package:smart_group/data/database/local_database.dart';
+import 'package:smart_group/data/models/country_model/countries_model.dart';
+import 'package:smart_group/data/models/my_response/my_response.dart';
 
 class CountriesRepository {
-  final ApiService apiService;
   CountriesRepository({required this.apiService});
 
-  Future<MyResponse> getCountriesData() => apiService.getCountriesData();
+  final CountriesApiSerice apiService;
 
-  Future<CountryModel> insertUserToDb(CountryModel countryModel) =>
-      LocalDatabase.insertCountry(countryModel: countryModel);
+  Future<MyResponse> getCountries() => apiService.getCountriesList();
+
+  Future<CountryModel> insertCountryToDb(CountryModel countryModel) =>
+      LocalDatabase.insertToDatabse(countryModel: countryModel);
 
   Future<List<CountryModel>> getAllCachedCountries() =>
       LocalDatabase.getCachedCountries();
 
-  Future<int> deleteCachedUsers() => LocalDatabase.deleteAll();
+  Future<int> deleteCachedCountries() => LocalDatabase.deleteAll();
 }

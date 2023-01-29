@@ -1,15 +1,15 @@
-import 'package:smart_group/data/api/models/continent_model.dart';
+import 'package:smart_group/data/models/country_model/continent_model.dart';
 
-class CountriesFields {
+class CountryFields {
+  static String code = "code";
   static String id = "id";
   static String name = "name";
   static String phone = "phone";
+  static String code_c = "code_c";
+  static String name_c = "name_c";
   static String capital = "capital";
   static String currency = "currency";
   static String emoji = "emoji";
-  static String code = "code";
-  static String code_c = "code_c";
-  static String code_n = "code_n";
 }
 
 class CountryModel {
@@ -26,14 +26,14 @@ class CountryModel {
 
   CountryModel(
       {required this.code_c,
-      required this.name_c,
-      required this.code,
-      required this.name,
-      required this.phone,
-      required this.continent,
-      required this.capital,
-      required this.currency,
-      required this.emoji});
+        required this.name_c,
+        required this.code,
+        required this.name,
+        required this.phone,
+        required this.continent,
+        required this.capital,
+        required this.currency,
+        required this.emoji});
 
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
@@ -70,8 +70,6 @@ class CountryModel {
     data['capital'] = capital;
     data['currency'] = currency;
     data['emoji'] = emoji;
-    print(continent.code);
-    print(continent.name);
     data["code_c"] = continent.code;
     data["name_c"] = continent.name;
     return data;
