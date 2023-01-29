@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pattern_formatter/numeric_formatter.dart';
 import 'package:smart_group/screen/card_screen/widget/card_info.dart';
 
 import '../../../utils/color.dart';
