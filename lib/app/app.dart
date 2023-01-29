@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/repositories/card_repository.dart';
-import 'package:smart_group/screen/card_screen/add_card_screen.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/add_card/add_review_bloc.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
+import 'package:smart_group/view/screens/add_screen/add_card_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class App extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

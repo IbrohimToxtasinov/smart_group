@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/models/card_model/card_model.dart';
-import 'package:smart_group/screen/card_screen/widget/card_info.dart';
-import 'package:smart_group/screen/card_screen/widget/my_button.dart';
-import 'package:smart_group/screen/card_screen/widget/my_form_field.dart';
-import 'package:smart_group/screen/card_screen/widget/on_focus_tap.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
+import 'package:smart_group/utils/color.dart';
 import 'package:smart_group/utils/constants.dart';
 import 'package:smart_group/utils/style.dart';
+import 'package:smart_group/view/screens/add_screen/widget/card_info.dart';
+import 'package:smart_group/view/screens/add_screen/widget/my_button.dart';
+import 'package:smart_group/view/screens/add_screen/widget/my_form_field.dart';
+import 'package:smart_group/view/screens/add_screen/widget/on_focus_tap.dart';
 
-import '../../utils/color.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({Key? key}) : super(key: key);
@@ -31,10 +31,10 @@ class AddCardScreenState extends State<AddCardScreen> {
 
   @override
   void initState() {
-    TextEditingController cardNumber = TextEditingController();
-    TextEditingController cardDate = TextEditingController();
-    TextEditingController cardName = TextEditingController();
-    TextEditingController cardOwner = TextEditingController();
+    cardNumber = TextEditingController();
+    cardDate = TextEditingController();
+    cardName = TextEditingController();
+    cardOwner = TextEditingController();
 
     super.initState();
   }
