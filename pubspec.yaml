@@ -73,10 +73,7 @@ flutter:
 
   assets:
     - assets/
-    - assets/images/
     - assets/lottie/
-    - assets/svg/
-    - assets/translations/
 
   fonts:
     - family: SourceSansPro-Black
