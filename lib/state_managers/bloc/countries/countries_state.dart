@@ -1,25 +1,24 @@
-part of 'countries_bloc.dart';
+import 'package:smart_group/data/models/country_model/countries_model.dart';
 
 abstract class CountriesState {}
 
 class CountriesInitial extends CountriesState {}
 
-class CountriesInLoading extends CountriesState {}
+class CountriesLoadInProgress extends CountriesState {}
 
-class CountriesLoadInSuccess extends CountriesState {
-  CountriesLoadInSuccess({required this.model});
+class CountriesLoadSuccess extends CountriesState {
+  CountriesLoadSuccess({required this.countries});
 
-  final List<CountryModel> model;
+  final List<CountryModel> countries;
 }
 
-class CountriesLoadInFailure extends CountriesState {
-  CountriesLoadInFailure({required this.errorText});
-
-  final String errorText;
+class CountriesLoadFailure extends CountriesState {
+  final String error;
+  CountriesLoadFailure({required this.error});
 }
 
 class CountriesFromCache extends CountriesState {
-  CountriesFromCache({required this.model});
+  CountriesFromCache({required this.countries});
 
-  final List<CountryModel> model;
+  final List<CountryModel> countries;
 }

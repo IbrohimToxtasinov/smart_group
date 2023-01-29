@@ -1,46 +1,45 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:smart_group/data/api/models/countries_model.dart';
-import 'package:smart_group/data/api/models/my_response/my_response.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_group/data/models/country_model/countries_model.dart';
+import 'package:smart_group/data/models/my_response/my_response.dart';
 import 'package:smart_group/data/repositories/countries_repository.dart';
-
-part 'countires_event.dart';
-part 'countries_state.dart';
+import 'package:smart_group/state_managers/bloc/countries/countires_event.dart';
+import 'package:smart_group/state_managers/bloc/countries/countries_state.dart';
 
 class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
-  CountriesBloc(this.repository) : super(CountriesInitial()) {
-    on<GetData>(_fetchCountriesData);
+  CountriesBloc(this.countriesRepository) : super((CountriesInitial())) {
+    on<GetCountries>(_fetchCountries);
   }
-  final CountriesRepository repository;
 
-  _fetchCountriesData(GetData event, Emitter<CountriesState> emit) async {
-    emit(CountriesInLoading());
+  final CountriesRepository countriesRepository;
 
-    MyResponse myResponse = await repository.getCountriesData();
+  _fetchCountries(GetCountries event, Emitter<CountriesState> emit) async {
+    emit(CountriesLoadInProgress());
+
+    MyResponse myResponse = await countriesRepository.getCountries();
+
     if (myResponse.error.isEmpty) {
       List<CountryModel> countries = myResponse.data as List<CountryModel>;
-      emit(CountriesLoadInSuccess(model: countries));
+      emit(CountriesLoadSuccess(countries: countries));
       await _updateCachedCountries(countries);
     } else {
-      List<CountryModel> countries = await repository.getAllCachedCountries();
+
+      print("ERROR USERS: ${myResponse.error}");
+      List<CountryModel> countries =
+      await countriesRepository.getAllCachedCountries();
+      print(countries);
       if (countries.isNotEmpty) {
-        emit(
-          CountriesFromCache(model: countries),
-        );
+        emit(CountriesFromCache(countries: countries));
       } else {
-        emit(
-          CountriesLoadInFailure(errorText: myResponse.error),
-        );
+        emit(CountriesLoadFailure(error: myResponse.error));
       }
     }
   }
 
-  _updateCachedCountries(List<CountryModel> model) async {
-    int count = await repository.deleteCachedUsers();
-    debugPrint("nimadir$count");
-    for (var model in model) {
-      await repository.insertUserToDb(model);
-      print("Tushdi");
+  _updateCachedCountries(List<CountryModel> countries) async {
+    int deletedCount = await countriesRepository.deleteCachedCountries();
+    print("O'CHIRILGANLAR SONI:$deletedCount");
+    for (var country in countries) {
+      await countriesRepository.insertCountryToDb(country);
     }
   }
 }

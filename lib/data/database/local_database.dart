@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:smart_group/data/api/models/countries_model.dart';
+import 'package:flutter/material.dart';
+import 'package:smart_group/data/models/country_model/countries_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class LocalDatabase {
-  static String tableName = "countriesTable";
+  static String tableName = "countries";
   static LocalDatabase getInstance = LocalDatabase._init();
   Database? _database;
 
@@ -12,41 +12,42 @@ class LocalDatabase {
 
   Future<Database> getDb() async {
     if (_database == null) {
-      _database = await _initDb("countries.db");
+      _database = await _initDB("countries.db");
       return _database!;
     }
     return _database!;
   }
 
-  Future<Database> _initDb(String fileName) async {
-    var dbPath =  getDatabasesPath();
-    String path = join( await dbPath, fileName);
+  Future<Database> _initDB(String fileName) async {
+    var dbPath = await getDatabasesPath();
+    String path = join(dbPath, fileName);
+
     Database database = await openDatabase(
       path,
       version: 1,
-      onCreate: (db, version) async {
+      onCreate: (Database db, int version) async {
         String idType = "INTEGER PRIMARY KEY AUTOINCREMENT";
         String textType = "TEXT";
 
         await db.execute('''
-CREATE TABLE $tableName(
-   ${CountriesFields.id} $idType,
-   ${CountriesFields.name} $textType,
-   ${CountriesFields.capital} $textType,
-   ${CountriesFields.code} $textType,
-   ${CountriesFields.phone} $textType,
-   ${CountriesFields.emoji} $textType,
-   ${CountriesFields.currency} $textType
-   ${CountriesFields.code_c} $textType
-   ${CountriesFields.code_n} $textType
-  )
-''');
+        CREATE TABLE $tableName (
+          ${CountryFields.id} $idType,
+            ${CountryFields.capital} $textType,
+            ${CountryFields.code} $textType,
+            ${CountryFields.name_c} $textType,
+            ${CountryFields.code_c} $textType,
+            ${CountryFields.currency} $textType,
+            ${CountryFields.emoji} $textType,
+            ${CountryFields.name} $textType,
+            ${CountryFields.phone} $textType
+            )
+            ''');
       },
     );
     return database;
   }
 
- static Future<CountryModel> insertCountry(
+  static Future<CountryModel> insertToDatabse(
       {required CountryModel countryModel}) async {
     var database = await getInstance.getDb();
     int id = await database.insert(tableName, countryModel.toJson());
@@ -55,19 +56,23 @@ CREATE TABLE $tableName(
   }
 
   static Future<List<CountryModel>> getCachedCountries() async {
-    var dataBase = await getInstance.getDb();
-    var listOfCountries = await dataBase.query(tableName, columns: [
-      CountriesFields.id,
-      CountriesFields.name,
-      CountriesFields.phone,
-      CountriesFields.emoji,
-      CountriesFields.capital,
-      CountriesFields.code,
-      CountriesFields.currency,
-      CountriesFields.code_c,
-      CountriesFields.code_n,
-    ]);
-    var list = listOfCountries.map((e) => CountryModel.json(e)).toList();
+    var database = await getInstance.getDb();
+    var listCountries = await database.query(
+      tableName,
+      columns: [
+        CountryFields.id,
+        CountryFields.capital,
+        CountryFields.code,
+        CountryFields.currency,
+        CountryFields.emoji,
+        CountryFields.name,
+        CountryFields.phone,
+        CountryFields.code_c,
+        CountryFields.name_c
+      ],
+    );
+    var list = listCountries.map((e) => CountryModel.json(e)).toList();
+
     return list;
   }
 

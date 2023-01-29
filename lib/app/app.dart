@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/repositories/card_repository.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/add_card/add_review_bloc.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
-import 'package:smart_group/view/screens/add_screen/add_card_screen.dart';
+import 'package:smart_group/view/screens/tab_box/api_page/countries_screen.dart';
+import 'package:smart_group/view/screens/tab_box/tab_box/tab_box.dart';
+
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -42,11 +44,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Smart Group',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AddCardScreen(),
+      home: const MainPage(),
     );
   }
 }
