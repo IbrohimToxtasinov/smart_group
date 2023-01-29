@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/api/service/api_service.dart';
 import 'package:smart_group/data/repositories/countries_repository.dart';
+import 'package:smart_group/screen/card_screen/all_cards.dart';
 import 'package:smart_group/state_managers/bloc/countries/countries_bloc.dart';
 import 'package:smart_group/state_managers/cubit/get_countries_data_cubit/get_countries_cubit.dart';
 import 'package:smart_group/view/screens/tab_box/api_page/api_call_page.dart';
@@ -15,7 +16,7 @@ void main() {
     BlocProvider(
         create: (context) =>
             CountriesCubit(CountriesRepository(apiService: ApiService())))
-  ], child: MyApp()));
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ApiCallPage(),
+      home: AllCardsScreen(),
     );
   }
 }
