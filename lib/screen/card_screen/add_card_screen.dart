@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_group/data/models/card_model/card_model.dart';
 import 'package:smart_group/screen/card_screen/widget/card_info.dart';
 import 'package:smart_group/screen/card_screen/widget/my_button.dart';
 import 'package:smart_group/screen/card_screen/widget/my_form_field.dart';
 import 'package:smart_group/screen/card_screen/widget/on_focus_tap.dart';
+import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
 import 'package:smart_group/utils/constants.dart';
 import 'package:smart_group/utils/style.dart';
 
@@ -29,10 +31,10 @@ class AddCardScreenState extends State<AddCardScreen> {
 
   @override
   void initState() {
-    cardNumber = TextEditingController();
-    cardDate = TextEditingController();
-    cardName = TextEditingController();
-    cardOwner = TextEditingController();
+    TextEditingController cardNumber = TextEditingController();
+    TextEditingController cardDate = TextEditingController();
+    TextEditingController cardName = TextEditingController();
+    TextEditingController cardOwner = TextEditingController();
 
     super.initState();
   }
@@ -111,7 +113,8 @@ class AddCardScreenState extends State<AddCardScreen> {
               const SizedBox(height: 16),
               MyFormField(
                 controller: cardNumber,
-                title: 'Karta raqami', textInputAction: TextInputAction.next,
+                title: 'Karta raqami',
+                textInputAction: TextInputAction.next,
               ),
               MyFormField(
                 controller: cardDate,
@@ -167,13 +170,27 @@ class AddCardScreenState extends State<AddCardScreen> {
       ),
       bottomNavigationBar: MyButton(
         title: "Qo'shish",
-        onTap: () {},
+        onTap: () {
+          context.read<AUDStateBloc>().add(
+                AddContact(
+                  contact: CardModel(
+                    cardId: "",
+                    gradient: [],
+                    cardNumber: "cardNumber",
+                    moneyAmount: "moneyAmount",
+                    owner: "owner",
+                    expireData: "expireData",
+                    iconImage: "iconImage",
+                    userId: "ibrohim",
+                    phoneId: "phoneId",
+                  ),
+                ),
+              );
+        },
       ),
     );
   }
 }
-
-
 
 hexColor(String colorhexcode) {
   String colornew = '0xff$colorhexcode';
