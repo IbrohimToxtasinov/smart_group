@@ -62,7 +62,11 @@ class _MyFormFieldState extends State<MyFormField> {
                   } else if (DateTime.now().year > int.parse("20${s.substring(3)}")) {
                     setState(() => isError = true);
                   }
-                }else{
+                }
+                else if(int.parse(s.substring(0, 2))>12){
+                  setState(() => isError = true);
+                }
+                else{
                   setState(() => isError = false);
                 }
               } else if (widget.title == "Karta nomi") {
