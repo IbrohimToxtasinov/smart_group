@@ -13,7 +13,7 @@ class CardRepository {
       DocumentReference newReview =
           await _firestore.collection("cards").add(cardModel.toJson());
       await _firestore.collection("cards").doc(newReview.id).update({
-        "user_id": newReview.id,
+        "cardId": newReview.id,
       });
       MyUtils.getMyToast(message: "New card successfully added!");
       return newReview.id.isNotEmpty;

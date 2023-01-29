@@ -1,21 +1,21 @@
 part of 'single_state_bloc.dart';
 
-class ContactsState extends Equatable {
+class CardState extends Equatable {
 
-  final ContactSate status;
+  final CardsStete status;
   final String statusText;
 
-  ContactsState({
+  CardState({
     required this.status,
     required this.statusText
   });
 
 
-  ContactsState copyWith({
-    ContactSate? status,
+  CardState copyWith({
+    CardsStete? status,
     String? statusText,
     CardModel? cardModel  }) =>
-      ContactsState(
+      CardState(
         status: status ?? this.status,
         statusText: statusText ?? this.statusText,
 
@@ -28,7 +28,7 @@ class ContactsState extends Equatable {
   ];
 }
 
-enum ContactSate{
+enum CardsStete{
   loading,
   pure,
   contactAdded,

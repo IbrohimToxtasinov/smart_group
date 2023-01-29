@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/models/card_model/card_model.dart';
-import 'package:smart_group/state_managers/bloc/card_bloc/add_card/add_review_bloc.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
 import 'package:smart_group/utils/color.dart';
 import 'package:smart_group/utils/constants.dart';
@@ -87,6 +86,7 @@ class AddCardScreenState extends State<AddCardScreen> {
                         padding: const EdgeInsets.only(right: 15),
                         child: GestureDetector(
                           onTap: () {
+
                             clicked = index;
                             setState(() {});
                           },
@@ -176,14 +176,14 @@ class AddCardScreenState extends State<AddCardScreen> {
                 AddContact(
                     contact: CardModel(
                         cardId: "",
-                        gradient: [],
-                        cardNumber: "cardNumber",
-                        moneyAmount: "moneyAmount",
-                        owner: "owner",
-                        expireData: "expireData",
+                        gradient: listOfGradient[clicked].first,
+                        cardNumber: cardNumber.text,
+                        moneyAmount: "100.000",
+                        owner: cardOwner.text,
+                        expireData: cardDate.text,
                         iconImage: "iconImage",
                         userId: "userId",
-                        cardName: "cardName")),
+                        cardName: cardName.text)),
               );
         },
       ),

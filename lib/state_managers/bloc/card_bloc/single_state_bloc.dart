@@ -8,36 +8,36 @@ part 'single_state_event.dart';
 
 part 'single_state_state.dart';
 
-class AUDStateBloc extends Bloc<ContactsEvent, ContactsState> {
+class AUDStateBloc extends Bloc<ContactsEvent, CardState> {
   AUDStateBloc({required this.cardRepository})
-      : super(ContactsState(
-            status: ContactSate.pure, statusText: "")) {
-    on<AddContact>(_addContact);
-    on<UpdateContact>(_updateContact);
-    // on<DeleteContact>(_deleteContact);
+      : super(CardState(
+            status: CardsStete.pure, statusText: "")) {
+    on<AddContact>(_addCArd);
+    on<UpdateContact>(_updateCard);
+    on<DeleteContact>(_deleteCard);
   }
 
   CardRepository cardRepository;
 
-  _addContact(AddContact event, Emitter<ContactsState> emit) async {
-    emit(state.copyWith(status: ContactSate.loading));
+  _addCArd(AddContact event, Emitter<CardState> emit) async {
+    emit(state.copyWith(status: CardsStete.loading));
     var newContact = cardRepository.addCard(cardModel: event.contact);
     if (newContact != null) {
-      emit(state.copyWith(status: ContactSate.contactAdded));
+      emit(state.copyWith(status: CardsStete.contactAdded));
     }
   }
 
-  _updateContact(UpdateContact event, Emitter<ContactsState> emit) async {
-    emit(state.copyWith(status: ContactSate.loading));
+  _updateCard(UpdateContact event, Emitter<CardState> emit) async {
+    emit(state.copyWith(status: CardsStete.loading));
     cardRepository.updateCard(cardModel: event.userModel);
-    emit(state.copyWith(status: ContactSate.contactUpdate));
+    emit(state.copyWith(status: CardsStete.contactUpdate));
   }
 
-  _deleteContact(DeleteContact event, Emitter<ContactsState> emit) async {
-    emit(state.copyWith(status: ContactSate.loading));
+  _deleteCard(DeleteContact event, Emitter<CardState> emit) async {
+    emit(state.copyWith(status: CardsStete.loading));
     var deleteId = cardRepository.deleteCard(doId: event.contactId);
     if (deleteId != "") {
-      emit(state.copyWith(status: ContactSate.contactDelete));
+      emit(state.copyWith(status: CardsStete.contactDelete));
     }
   }
 }

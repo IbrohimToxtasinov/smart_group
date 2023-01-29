@@ -18,10 +18,10 @@ class UpdateCardScreen extends StatefulWidget {
 }
 
 class UpdateCardScreenState extends State<UpdateCardScreen> {
-  late TextEditingController cardNumber;
-  late TextEditingController cardDate;
-  late TextEditingController cardName;
-  late TextEditingController cardOwner;
+  TextEditingController cardNumber = TextEditingController();
+  TextEditingController cardDate = TextEditingController();
+  TextEditingController cardName = TextEditingController();
+  TextEditingController cardOwner = TextEditingController();
   int clicked = 0;
 
   String phoneNumber = "";

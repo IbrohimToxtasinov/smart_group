@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_group/view/screens/tab_box/cards_screen/cards_screen.dart';
 import 'package:smart_group/view/screens/tab_box/countries_Screen/countries_screen.dart';
+import 'package:smart_group/view/screens/tab_box/file_download_screen/file_download_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _MainPageState extends State<MainPage> {
     List pages = [
       CountriesScreen(),
       AllCardsScreen(),
-      Container(),
+      FileDownloadScreen(),
     ];
     return Scaffold(
         body: pages[currentPage],
