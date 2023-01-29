@@ -59,12 +59,12 @@ class _MyFormFieldState extends State<MyFormField> {
                       setState(() => isError = true);
                       print('"er5r');
                     }
-                  } else if (DateTime.now().year > int.parse("20${s.substring(3)}")) {
+                  }
+                  else if (DateTime.now().year > int.parse("20${s.substring(3)}")) {
+                    setState(() => isError = true);
+                  }else if(int.parse(s.substring(0, 2))>12){
                     setState(() => isError = true);
                   }
-                }
-                else if(int.parse(s.substring(0, 2))>12){
-                  setState(() => isError = true);
                 }
                 else{
                   setState(() => isError = false);
