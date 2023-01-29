@@ -5,26 +5,22 @@ import 'package:smart_group/screen/card_screen/widget/card_info.dart';
 
 import '../../../utils/color.dart';
 
-class MyFormField extends StatefulWidget {
+class MyFormField extends StatelessWidget {
   final TextEditingController controller;
   final String title;
   final TextInputAction textInputAction;
   final TextInputType inputType;
+  bool isError;
+  final VoidCallback? onTap;
 
-  const MyFormField({
+   MyFormField({
     Key? key,
     required this.controller,
     required this.title,
     required this.textInputAction,
     this.inputType = TextInputType.text,
+    this.isError =false,  this.onTap
   }) : super(key: key);
-
-  @override
-  State<MyFormField> createState() => _MyFormFieldState();
-}
-
-class _MyFormFieldState extends State<MyFormField> {
-  bool isError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,48 +31,33 @@ class _MyFormFieldState extends State<MyFormField> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 12),
-            child: Text(widget.title),
+            child: Text(title),
           ),
           const SizedBox(height: 7),
           TextFormField(
-            keyboardType: widget.inputType,
-            inputFormatters: widget.title == "Karta raqami"
+            keyboardType: inputType,
+            inputFormatters: title == "Karta raqami"
                 ? [CreditCardFormatter(), LengthLimitingTextInputFormatter(19)]
-                : widget.title == "Amal qilish muddati"
-                    ? [
-                        CardExpirationFormatter(),
-                        LengthLimitingTextInputFormatter(5)
-                      ]
+                : title == "Amal qilish muddati"
+                    ? [ CardExpirationFormatter(),
+                        LengthLimitingTextInputFormatter(5)]
                     : [],
             onChanged: (s) {
-              if (widget.title == "Karta raqami") {
+              if (title == "Karta raqami") {
                 CardInfo.numberValue.value = s;
-              } else if (widget.title == "Amal qilish muddati") {
+              } else if (title == "Amal qilish muddati") {
                 CardInfo.dateValue.value = s;
-                if (s.length == 5) {
-                  if (DateTime.now().year.toString() == "20${s.substring(3)}") {
-                    if (DateTime.now().month >= int.parse(s.substring(0, 2))) {
-                      setState(() => isError = true);
-                    }
-                  } else if (DateTime.now().year >
-                      int.parse("20${s.substring(3)}")) {
-                    setState(() => isError = true);
-                  } else if (int.parse(s.substring(0, 2)) > 12) {
-                    setState(() => isError = true);
-                  }
-                } else {
-                  setState(() => isError = false);
-                }
-              } else if (widget.title == "Karta nomi") {
+                onTap!();
+              } else if (title == "Karta nomi") {
                 CardInfo.nameValue.value = s;
-              } else if (widget.title == "Karta egasining to'liq ism sharifi") {
+              } else if (title == "Karta egasining to'liq ism sharifi") {
                 CardInfo.ownerValue.value = s;
               }
             },
-            textInputAction: widget.textInputAction,
-            controller: widget.controller,
+            textInputAction: textInputAction,
+            controller: controller,
             decoration: InputDecoration(
-              hintText: widget.title,
+              hintText: title,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
               border: OutlineInputBorder(

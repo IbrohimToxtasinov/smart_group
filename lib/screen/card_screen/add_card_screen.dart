@@ -24,6 +24,7 @@ class AddCardScreenState extends State<AddCardScreen> {
   List<String> listOfType = ["Uzcard", "Humo"];
   String type = 'Uzcard';
   int clicked = 0;
+  bool isError=false;
 
   String phoneNumber = "";
 
@@ -118,7 +119,38 @@ class AddCardScreenState extends State<AddCardScreen> {
                 controller: cardDate,
                 title: 'Amal qilish muddati',
                 textInputAction: TextInputAction.next,
-                  inputType: TextInputType.number
+                  inputType: TextInputType.number,
+                isError: isError,
+                onTap: (){
+                  try {
+                    if (cardDate.text.length == 5) {
+                      if (DateTime
+                          .now()
+                          .year
+                          .toString() == "20${(cardDate.text.substring(3))}") {
+                        if (DateTime
+                            .now()
+                            .month >= int.parse(cardDate.text.substring(0, 2)) ){
+                          setState(() => isError = true);
+                        }
+                        if (int.parse(cardDate.text.substring(0, 2)) > 12) {
+                          setState(() => isError = true);
+                        }
+                      } else if (DateTime
+                          .now()
+                          .year >
+                          int.parse("20${(cardDate.text.substring(3))}")) {
+                        setState(() => isError = true);
+                      } else if (int.parse(cardDate.text.substring(0, 2)) > 12) {
+                        setState(() => isError = true);
+                      }
+                    } else {
+                      setState(() => isError = false);
+                    }
+                  }catch(e){
+                    setState(() => isError = false);
+                  }
+                },
               ),
               MyFormField(
                 controller: cardName,
@@ -169,7 +201,10 @@ class AddCardScreenState extends State<AddCardScreen> {
       ),
       bottomNavigationBar: MyButton(
         title: "Qo'shish",
-        onTap: () {},
+        onTap: () {
+
+        },
+        isActive: cardNumber.text.isNotEmpty && cardDate.text.isNotEmpty && cardName.text.isNotEmpty && cardOwner.text.isNotEmpty && !isError,
       ),
     );
   }
