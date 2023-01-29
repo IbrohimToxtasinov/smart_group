@@ -5,7 +5,8 @@ import 'package:smart_group/data/repositories/countries_repository.dart';
 import 'package:smart_group/state_managers/bloc/countries/countires_event.dart';
 import 'package:smart_group/state_managers/bloc/countries/countries_bloc.dart';
 import 'package:smart_group/state_managers/bloc/countries/countries_state.dart';
-import 'package:smart_group/view/screens/countries_detail/country_detail_screen.dart';
+
+import '../../countries_detail/countries_detail_page.dart';
 
 class CountriesScreen extends StatelessWidget {
   const CountriesScreen({super.key});
