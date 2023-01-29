@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smart_group/utils/color.dart';
 import 'package:smart_group/utils/style.dart';
 
-
 class CardInfo extends StatelessWidget {
   static var numberValue = ValueNotifier(' ');
   static var dateValue = ValueNotifier(' ');

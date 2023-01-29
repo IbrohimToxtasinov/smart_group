@@ -33,13 +33,13 @@ class AUDStateBloc extends Bloc<ContactsEvent, ContactsState> {
     emit(state.copyWith(status: ContactSate.contactUpdate));
   }
 
-  // _deleteContact(DeleteContact event, Emitter<ContactsState> emit) async {
-  //   emit(state.copyWith(status: ContactSate.loading));
-  //   var deleteId = cardRepository.deleteContactById(id: event.contactId);
-  //   if (deleteId != -1) {
-  //     emit(state.copyWith(status: ContactSate.contactDelete));
-  //   }
-  // }
+  _deleteContact(DeleteContact event, Emitter<ContactsState> emit) async {
+    emit(state.copyWith(status: ContactSate.loading));
+    var deleteId = cardRepository.deleteCard(doId: event.contactId);
+    if (deleteId != "") {
+      emit(state.copyWith(status: ContactSate.contactDelete));
+    }
+  }
 }
 
 enum MyStatus {

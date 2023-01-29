@@ -36,6 +36,15 @@ class CardRepository {
     }
   }
 
+  Future<void> deleteCard({required String doId}) async {
+    try {
+      await _firestore.collection("cards").doc(doId).delete();
+      MyUtils.getMyToast(message: "Karta muvaffaqiyatli o'chirildi!");
+    } on FirebaseException catch (er) {
+      MyUtils.getMyToast(message: er.message.toString());
+    }
+  }
+
   Stream<List<CardModel>> getCards() =>
       _firestore.collection("cards").snapshots().map(
             (event1) => event1.docs

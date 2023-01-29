@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_group/view/screens/add_screen/add_card_screen.dart';
-import 'package:smart_group/view/screens/tab_box/api_page/countries_screen.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/cards_screen.dart';
+import 'package:smart_group/view/screens/tab_box/countries_Screen/countries_screen.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     List pages = [
       CountriesScreen(),
-      AddCardScreen(),
+      AllCardsScreen(),
       Container(),
     ];
     return Scaffold(

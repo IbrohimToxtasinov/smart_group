@@ -7,7 +7,7 @@ class CardModel {
   final String expireData;
   final String iconImage;
   final String userId;
-  final String phoneId;
+  final String cardName;
 
   CardModel({
     required this.cardId,
@@ -18,7 +18,7 @@ class CardModel {
     required this.expireData,
     required this.iconImage,
     required this.userId,
-    required this.phoneId,
+    required this.cardName,
   });
 
   factory CardModel.fromJson(Map<String, Object?> json) {
@@ -31,7 +31,7 @@ class CardModel {
       expireData: json["expireData"] as String? ?? "",
       iconImage: json["iconImage"] as String? ?? "",
       userId: json["userId"] as String? ?? "",
-      phoneId: json["phoneId"] as String? ?? "",
+      cardName: json["cardName"] as String? ?? "",
     );
   }
 
@@ -45,7 +45,7 @@ class CardModel {
       'expireData': expireData,
       'iconImage': iconImage,
       'userId': userId,
-      'phoneId': phoneId,
+      'cardName': cardName,
     };
   }
 }

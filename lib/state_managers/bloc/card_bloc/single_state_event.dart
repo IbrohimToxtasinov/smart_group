@@ -18,5 +18,5 @@ class UpdateContact extends ContactsEvent {
 class DeleteContact extends ContactsEvent {
   DeleteContact({required this.contactId});
 
-  final int contactId;
+  final String contactId;
 }

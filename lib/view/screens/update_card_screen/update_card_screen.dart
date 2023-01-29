@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:smart_group/screen/card_screen/widget/card_info.dart';
-import 'package:smart_group/screen/card_screen/widget/my_button.dart';
-import 'package:smart_group/screen/card_screen/widget/my_form_field.dart';
-import 'package:smart_group/screen/card_screen/widget/on_focus_tap.dart';
+import 'package:smart_group/data/models/card_model/card_model.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/cards_screen.dart';
+import 'package:smart_group/utils/color.dart';
 import 'package:smart_group/utils/constants.dart';
 import 'package:smart_group/utils/style.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/my_button.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/my_form_field.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/on_focus_tap.dart';
 
-import '../../utils/color.dart';
-import 'all_cards.dart';
+class UpdateCardScreen extends StatefulWidget {
+  const UpdateCardScreen({Key? key, required this.cardModel}) : super(key: key);
 
-class EditScreen extends StatefulWidget {
-  const EditScreen({Key? key}) : super(key: key);
+  final CardModel cardModel;
 
   @override
-  State<EditScreen> createState() => EditScreenState();
+  State<UpdateCardScreen> createState() => UpdateCardScreenState();
 }
 
-class EditScreenState extends State<EditScreen> {
+class UpdateCardScreenState extends State<UpdateCardScreen> {
   late TextEditingController cardNumber;
   late TextEditingController cardDate;
   late TextEditingController cardName;
@@ -27,8 +28,8 @@ class EditScreenState extends State<EditScreen> {
 
   @override
   void initState() {
-    cardName = TextEditingController();
-    cardOwner = TextEditingController();
+    cardName.text = widget.cardModel.cardName;
+    cardOwner.text = widget.cardModel.owner;
 
     super.initState();
   }
@@ -68,25 +69,25 @@ class EditScreenState extends State<EditScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "0000 0000 0000 0000",
+                      widget.cardModel.cardNumber,
                       style: MyTextStyle.sfProMedium
                           .copyWith(color: MyColors.white, fontSize: 23),
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      "11/23",
+                      widget.cardModel.expireData,
                       style: MyTextStyle.sfProMedium
                           .copyWith(color: MyColors.white, fontSize: 20),
                     ),
                     const SizedBox(height: 7),
                     Text(
-                      "Karta nomi",
+                      widget.cardModel.cardName,
                       style: MyTextStyle.sfProMedium
                           .copyWith(color: MyColors.white, fontSize: 17),
                     ),
                     const Spacer(),
                     Text(
-                      "Karta egasi",
+                      widget.cardModel.owner,
                       style: MyTextStyle.sfProMedium
                           .copyWith(color: MyColors.white, fontSize: 19),
                       overflow: TextOverflow.ellipsis,

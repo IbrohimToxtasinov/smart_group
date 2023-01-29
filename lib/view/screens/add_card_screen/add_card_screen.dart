@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_group/data/models/card_model/card_model.dart';
+import 'package:smart_group/state_managers/bloc/card_bloc/add_card/add_review_bloc.dart';
 import 'package:smart_group/state_managers/bloc/card_bloc/single_state_bloc.dart';
 import 'package:smart_group/utils/color.dart';
 import 'package:smart_group/utils/constants.dart';
 import 'package:smart_group/utils/style.dart';
-import 'package:smart_group/view/screens/add_screen/widget/card_info.dart';
-import 'package:smart_group/view/screens/add_screen/widget/my_button.dart';
-import 'package:smart_group/view/screens/add_screen/widget/my_form_field.dart';
-import 'package:smart_group/view/screens/add_screen/widget/on_focus_tap.dart';
-
+import 'package:smart_group/view/screens/tab_box/cards_screen/cards_screen.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/card_info.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/my_button.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/my_form_field.dart';
+import 'package:smart_group/view/screens/tab_box/cards_screen/widget/on_focus_tap.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({Key? key}) : super(key: key);
@@ -112,15 +113,15 @@ class AddCardScreenState extends State<AddCardScreen> {
               ),
               const SizedBox(height: 16),
               MyFormField(
-                controller: cardNumber,
-                title: 'Karta raqami',
-                textInputAction: TextInputAction.next,
-              ),
+                  controller: cardNumber,
+                  title: 'Karta raqami',
+                  textInputAction: TextInputAction.next,
+                  inputType: TextInputType.number),
               MyFormField(
-                controller: cardDate,
-                title: 'Amal qilish muddati',
-                textInputAction: TextInputAction.next,
-              ),
+                  controller: cardDate,
+                  title: 'Amal qilish muddati',
+                  textInputAction: TextInputAction.next,
+                  inputType: TextInputType.number),
               MyFormField(
                 controller: cardName,
                 title: 'Karta nomi',
@@ -173,28 +174,19 @@ class AddCardScreenState extends State<AddCardScreen> {
         onTap: () {
           context.read<AUDStateBloc>().add(
                 AddContact(
-                  contact: CardModel(
-                    cardId: "",
-                    gradient: [],
-                    cardNumber: "cardNumber",
-                    moneyAmount: "moneyAmount",
-                    owner: "owner",
-                    expireData: "expireData",
-                    iconImage: "iconImage",
-                    userId: "ibrohim",
-                    phoneId: "phoneId",
-                  ),
-                ),
+                    contact: CardModel(
+                        cardId: "",
+                        gradient: [],
+                        cardNumber: "cardNumber",
+                        moneyAmount: "moneyAmount",
+                        owner: "owner",
+                        expireData: "expireData",
+                        iconImage: "iconImage",
+                        userId: "userId",
+                        cardName: "cardName")),
               );
         },
       ),
     );
   }
-}
-
-hexColor(String colorhexcode) {
-  String colornew = '0xff$colorhexcode';
-  colornew = colornew.replaceAll("#", "");
-  int colorint = int.parse(colornew);
-  return colorint;
 }
