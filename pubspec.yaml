@@ -60,6 +60,7 @@ dependencies:
   keyboard_dismisser: ^3.0.0
   animated_snack_bar: ^0.3.0
   google_sign_in: ^5.4.3
+  pattern_formatter: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +74,10 @@ flutter:
 
   assets:
     - assets/
+#    - assets/images/
     - assets/lottie/
+#    - assets/svg/
+#    - assets/translations/
 
   fonts:
     - family: SourceSansPro-Black
