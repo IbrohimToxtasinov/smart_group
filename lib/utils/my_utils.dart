@@ -150,25 +150,25 @@ String getAppointmentStatus(String status) {
 //   }
 // }
 
- InputDecoration getInputDecoration({required String label}) {
-  return  InputDecoration(
-    focusedBorder:OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.grey.withOpacity(0.3),width: 2),
-        borderRadius: BorderRadius.circular(100)) ,
-    border: OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.grey.withOpacity(0.1),width: 2),
-        borderRadius: BorderRadius.circular(100),
-    ),
-    enabledBorder: OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.grey.withOpacity(0.1),width: 2),
-        borderRadius: BorderRadius.circular(100)),
-    errorBorder: InputBorder.none,
-    disabledBorder: InputBorder.none,
-    hintText: label,
-    focusColor: Colors.white,
-    hintStyle:  TextStyle(color: Colors.grey.withOpacity(0.4)),
-    filled: true,
-    fillColor: Colors.white,
+//  InputDecoration getInputDecoration({required String label}) {
+//   return  InputDecoration(
+//     focusedBorder:OutlineInputBorder(
+//         borderSide:  BorderSide(color: Colors.grey.withOpacity(0.3),width: 2),
+//         borderRadius: BorderRadius.circular(100)) ,
+//     border: OutlineInputBorder(
+//         borderSide:  BorderSide(color: Colors.grey.withOpacity(0.1),width: 2),
+//         borderRadius: BorderRadius.circular(100),
+//     ),
+//     enabledBorder: OutlineInputBorder(
+//         borderSide:  BorderSide(color: Colors.grey.withOpacity(0.1),width: 2),
+//         borderRadius: BorderRadius.circular(100)),
+//     errorBorder: InputBorder.none,
+//     disabledBorder: InputBorder.none,
+//     hintText: label,
+//     focusColor: Colors.white,
+//     hintStyle:  TextStyle(color: Colors.grey.withOpacity(0.4)),
+//     filled: true,
+//     fillColor: Colors.white,
 
-  );
-}
+//   );
+// }

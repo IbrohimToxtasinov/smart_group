@@ -9,11 +9,12 @@ environment:
   sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   adaptive_theme: ^3.1.1
-  sqflite: ^2.2.3
+  permission_handler: ^10.2.0
+  open_file_safe: ^3.2.3
+
+
+  animated_snack_bar: ^0.3.0
   cached_network_image: ^3.2.2
   change_app_package_name: ^1.1.0
   cloud_firestore: ^4.1.0
@@ -25,9 +26,12 @@ dependencies:
   email_validator: ^2.1.16
   equatable: ^2.0.5
   file_picker: ^5.0.1
+  firebase_auth: ^4.2.5
   firebase_core: ^2.3.0
   firebase_messaging: ^14.1.1
   firebase_storage: ^11.0.6
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_linkify: ^5.0.2
   flutter_local_notifications: ^12.0.2
@@ -40,9 +44,11 @@ dependencies:
   formz: ^0.4.0
   geolocator: ^9.0.2
   google_maps_flutter: ^2.2.1
+  google_sign_in: ^5.4.3
   image_picker: ^0.8.5+3
   intl: ^0.17.0
   json_serializable: ^6.3.1
+  keyboard_dismisser: ^3.0.0
   lottie: ^1.4.3
   mask_text_input_formatter: ^2.3.0
   meta: ^1.7.0
@@ -50,23 +56,18 @@ dependencies:
   nfc_manager: ^3.2.0
   open_filex: ^4.1.1
   path_provider: ^2.0.11
-  permission_handler: ^10.2.0
+  pattern_formatter: ^2.0.0
   photo_view: ^0.14.0
   shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0
+  sqflite: ^2.2.3
   url_launcher: ^6.1.4
-  firebase_auth: ^4.2.5
   zoom_tap_animation: ^1.1.0
-  keyboard_dismisser: ^3.0.0
-  animated_snack_bar: ^0.3.0
-  google_sign_in: ^5.4.3
-  pattern_formatter: ^2.0.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
 
 flutter:
 
@@ -74,11 +75,10 @@ flutter:
 
   assets:
     - assets/
-#    - assets/images/
+    #    - assets/images/
     - assets/lottie/
-#    - assets/svg/
-#    - assets/translations/
-
+  #    - assets/svg/
+  #    - assets/translations/
   fonts:
     - family: SourceSansPro-Black
       fonts:
