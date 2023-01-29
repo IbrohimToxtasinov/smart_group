@@ -39,27 +39,27 @@ class MyColors {
   // Action Primary
   static const Color actionPrimaryDefault = Color(0xFF2972FE);
   static Color actionPrimaryHover =
-      Color.alphaBlend(Color(0xFF2972FE), Color(0xFFFFFFFF).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFF2972FE), const Color(0xFFFFFFFF).withOpacity(0.2));
   static Color actionPrimaryActive =
-      Color.alphaBlend(Color(0xFF2972FE), Color(0xFF000000).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFF2972FE), const Color(0xFF000000).withOpacity(0.2));
   static const Color actionPrimaryDisabled = Color(0xFF93B8FE);
   static const Color actionPrimaryInverted = Color(0xFFFFFFFF);
 
   // Action Secondary
   static const Color actionSecondaryDefault = Color(0xFFFFB800);
   static Color actionSecondaryHover =
-      Color.alphaBlend(Color(0xFFFFB800), Color(0xFFFFFFFF).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFFFFB800), const Color(0xFFFFFFFF).withOpacity(0.2));
   static Color actionSecondaryActive =
-      Color.alphaBlend(Color(0xFFFFB800), Color(0xFF000000).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFFFFB800), const Color(0xFF000000).withOpacity(0.2));
   static const Color actionSecondaryDisabled = Color(0xFFFFB800);
   static const Color actionSecondaryInverted = Color(0xFFFFFFFF);
 
   // Action Neutral
   static const Color actionNeutralDefault = Color(0xFF9098A1);
   static Color actionNeutralHover =
-      Color.alphaBlend(Color(0xFF9098A1), Color(0xFFFFFFFF).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFF9098A1), const Color(0xFFFFFFFF).withOpacity(0.2));
   static Color actionNeutralActive =
-      Color.alphaBlend(Color(0xFF9098A1), Color(0xFF000000).withOpacity(0.2));
+      Color.alphaBlend(const Color(0xFF9098A1), const Color(0xFF000000).withOpacity(0.2));
   static const Color actionNeutralDisabled = Color(0xFF9098A1);
   static const Color actionNeutralInverted = Color(0xFFFFFFFF);
 
@@ -77,8 +77,8 @@ class MyColors {
   static const otherGradient1 = [ Color(0xFF6499FF),Color(0xFF2972FE),];
   static const otherGradient2 = [Color(0xFFFFB800), Color(0xFFFFDA7B)];
   static List<Color> otherGradient3 = [
-    Color(0xFFFF1843).withOpacity(0.9),
-    Color(0xFFFF5E7C).withOpacity(0.9)
+    const Color(0xFFFF1843).withOpacity(0.9),
+    const Color(0xFFFF5E7C).withOpacity(0.9)
   ];
   static const Color othersDark1 = Color(0xFF161B20);
   static const Color othersDark2 = Color(0xFF0D0D0D);
